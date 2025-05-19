@@ -1,0 +1,36 @@
+name: E2E Tests CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do código
+      uses: actions/checkout@v3
+
+    - name: Configurar Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+
+    - name: Configurar Chrome
+      uses: browser-actions/setup-chrome@v1
+
+    - name: Instalar dependências do Maven
+      run: mvn clean install -DskipTests
+
+    - name: Executar testes E2E
+      run: mvn test
+
+    - name: Publicar artefato do relatório HTML
+      uses: actions/upload-artifact@v3
+      with:
+        name: cucumber-html-report
+        path: target/cucumber-report.html

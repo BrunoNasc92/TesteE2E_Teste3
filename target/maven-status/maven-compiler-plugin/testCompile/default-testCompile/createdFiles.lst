@@ -1,0 +1,8 @@
+br\com\e2e\steps\CheckoutSteps.class
+br\com\e2e\pages\ProductsPage.class
+br\com\e2e\runner\TestRunner.class
+br\com\e2e\steps\LoginSteps.class
+br\com\e2e\pages\CartPage.class
+br\com\e2e\pages\CheckoutPage.class
+br\com\e2e\pages\CheckoutCompletePage.class
+br\com\e2e\pages\LoginPage.class
