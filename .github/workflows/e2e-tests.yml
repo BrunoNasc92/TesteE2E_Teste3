@@ -30,7 +30,7 @@ jobs:
       run: mvn test
 
     - name: Publicar artefato do relatório HTML
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v2
       with:
         name: cucumber-html-report
         path: target/cucumber-report.html
