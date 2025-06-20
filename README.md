@@ -49,7 +49,7 @@ src/
 
 1. Clone este repositório:
 ```bash
-git clone https://github.com/seuusuario/e2e-selenium-cucumber.git
+git clone https://github.com/BrunoNasc92/TesteE2E_Teste3.git
 ```
 
 2. Navegue até o diretório do projeto e execute os testes:
