@@ -5,6 +5,11 @@ import io.cucumber.java.pt.*;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
+import org.openqa.selenium.edge.EdgeDriver;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class CheckoutSteps {
@@ -17,8 +22,8 @@ public class CheckoutSteps {
 
     @Dado("que o usuário está logado no SauceDemo")
     public void usuarioLogado() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        WebDriverManager.edgedriver().setup();
+        driver = new EdgeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/");
         loginPage = new LoginPage(driver);
@@ -46,6 +51,10 @@ public class CheckoutSteps {
 
     @Quando("preenche o formulário com nome {string}, sobrenome {string} e CEP {string}")
     public void preencherFormulario(String nome, String sobrenome, String cep) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.urlContains("checkout-step-one.html")); // Espera a página correta
+
+
         checkoutPage = new CheckoutPage(driver);
         checkoutPage.fillForm(nome, sobrenome, cep);
         checkoutPage.continueCheckout();
